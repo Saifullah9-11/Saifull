@@ -1,0 +1,8 @@
+{
+  "name": "Saifullah Irfan - Premium Portfolio",
+  "description": "A high-end personal portfolio experience for creative professionals, featuring immersive animations and integrated Gemini AI tools for image and video generation.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
