@@ -5,12 +5,14 @@ import { PROJECTS, SERVICES, TESTIMONIALS } from './constants';
 import CustomCursor from './components/CustomCursor';
 import ProjectCard from './components/ProjectCard';
 import Generators from './components/Generators';
+import InfographicBackground from './components/InfographicBackground';
 import { 
   ChevronDown, 
   ArrowRight, 
   Instagram, 
   Linkedin, 
   Twitter, 
+  Facebook,
   Mail, 
   Download,
   Target,
@@ -46,6 +48,7 @@ const App: React.FC = () => {
   return (
     <div className="relative">
       <CustomCursor />
+      <InfographicBackground />
       
       <AnimatePresence>
         {loading && (
@@ -163,7 +166,7 @@ const App: React.FC = () => {
         </section>
 
         {/* ABOUT SECTION */}
-        <section id="about" className="py-32 px-6 bg-zinc-950">
+        <section id="about" className="py-32 px-6 bg-zinc-950/80">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative group">
               <div className="aspect-[4/5] rounded-3xl overflow-hidden border border-zinc-800">
@@ -206,7 +209,7 @@ const App: React.FC = () => {
         </section>
 
         {/* SERVICES SECTION */}
-        <section id="services" className="py-32 px-6 bg-zinc-900/20">
+        <section id="services" className="py-32 px-6 bg-zinc-900/20 backdrop-blur-sm">
           <div className="max-w-6xl mx-auto mb-20 text-center">
             <span className="text-amber-500 text-sm tracking-[0.3em] uppercase font-bold block mb-4">Core Expertise</span>
             <h2 className="text-5xl md:text-7xl font-bold">Growth Services.</h2>
@@ -227,7 +230,7 @@ const App: React.FC = () => {
         </section>
 
         {/* HOW I WORK SECTION */}
-        <section className="py-32 px-6 bg-zinc-950">
+        <section className="py-32 px-6 bg-zinc-950/80">
           <div className="max-w-6xl mx-auto">
             <div className="mb-20">
               <span className="text-amber-500 text-sm tracking-[0.3em] uppercase font-bold block mb-4">The Methodology</span>
@@ -291,7 +294,7 @@ const App: React.FC = () => {
         </section>
 
         {/* PORTFOLIO SHOWCASE */}
-        <section id="portfolio" className="py-32 px-6 bg-zinc-950">
+        <section id="portfolio" className="py-32 px-6 bg-zinc-950/80">
           <div className="max-w-6xl mx-auto mb-20">
             <span className="text-amber-500 text-sm tracking-[0.3em] uppercase font-bold block mb-4">Case Studies</span>
             <h2 className="text-5xl md:text-7xl font-bold">Execution Gallery.</h2>
@@ -307,7 +310,7 @@ const App: React.FC = () => {
         <Generators />
 
         {/* TESTIMONIALS */}
-        <section className="py-32 bg-zinc-900/30 overflow-hidden">
+        <section className="py-32 bg-zinc-900/30 overflow-hidden backdrop-blur-sm">
           <div className="max-w-6xl mx-auto px-6">
              <div className="flex flex-col items-center text-center mb-20">
                <span className="text-amber-500 text-sm tracking-[0.3em] uppercase font-bold block mb-6">Testimonials</span>
@@ -337,7 +340,7 @@ const App: React.FC = () => {
 
         {/* CONTACT SECTION */}
         <section id="contact" className="py-32 px-6">
-          <div className="max-w-6xl mx-auto bg-zinc-900 p-12 md:p-24 rounded-[60px] relative overflow-hidden">
+          <div className="max-w-6xl mx-auto bg-zinc-900/80 backdrop-blur-md p-12 md:p-24 rounded-[60px] relative overflow-hidden border border-zinc-800">
             <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
               <h2 className="text-[200px] font-bold leading-none select-none">LEADS.</h2>
             </div>
@@ -350,12 +353,12 @@ const App: React.FC = () => {
                 </p>
                 
                 <div className="space-y-6">
-                  <a href="mailto:hello@saifullah.me" className="flex items-center gap-4 text-2xl font-bold hover:text-amber-500 transition-colors">
-                    <Mail className="text-amber-500" /> hello@saifullah.me
+                  <a href="mailto:saifullahahmed288@gmail.com" className="flex items-center gap-4 text-2xl font-bold hover:text-amber-500 transition-colors">
+                    <Mail className="text-amber-500" /> saifullahahmed288@gmail.com
                   </a>
                   <div className="flex gap-6 pt-4">
-                    <a href="#" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all"><Instagram size={20} /></a>
-                    <a href="#" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all"><Linkedin size={20} /></a>
+                    <a href="https://www.facebook.com/profile.php?id=61556673394898" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all"><Facebook size={20} /></a>
+                    <a href="https://www.linkedin.com/in/saifullah-irfan-/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all"><Linkedin size={20} /></a>
                     <a href="#" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all"><Twitter size={20} /></a>
                   </div>
                 </div>
@@ -381,7 +384,7 @@ const App: React.FC = () => {
         </section>
       </main>
 
-      <footer className="py-12 px-6 text-center border-t border-zinc-900">
+      <footer className="py-12 px-6 text-center border-t border-zinc-900 bg-zinc-950 relative z-20">
         <p className="text-zinc-600 text-xs uppercase tracking-[0.5em]">&copy; 2024 Saifullah Irfan. Execution Focused Growth.</p>
       </footer>
     </div>
