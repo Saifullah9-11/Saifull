@@ -3,7 +3,8 @@ import { GoogleGenAI } from "@google/genai";
 
 export class GeminiService {
   private static getClient() {
-    return new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    // fix: Use direct process.env.API_KEY as per initialization guidelines
+    return new GoogleGenAI({ apiKey: process.env.API_KEY });
   }
 
   static async generateImage(prompt: string, size: "1K" | "2K" | "4K" = "1K") {
@@ -21,6 +22,7 @@ export class GeminiService {
       },
     });
 
+    // fix: Iterate through parts to find the image part as recommended
     for (const part of response.candidates[0].content.parts) {
       if (part.inlineData) {
         return `data:image/png;base64,${part.inlineData.data}`;
@@ -57,6 +59,7 @@ export class GeminiService {
     }
 
     const downloadLink = operation.response?.generatedVideos?.[0]?.video?.uri;
+    // fix: Ensure API key is appended to the video download link
     const response = await fetch(`${downloadLink}&key=${process.env.API_KEY}`);
     const blob = await response.blob();
     return URL.createObjectURL(blob);

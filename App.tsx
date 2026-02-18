@@ -14,7 +14,6 @@ import {
   Twitter, 
   Facebook,
   Mail, 
-  Download,
   Target,
   Share2,
   Search,
@@ -44,6 +43,14 @@ const App: React.FC = () => {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const body = `Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\nMessage: ${formData.get('message')}`;
+    window.location.href = `mailto:saifullahahmed288@gmail.com?subject=Consultation Request&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <div className="relative">
@@ -357,9 +364,15 @@ const App: React.FC = () => {
                     <Mail className="text-amber-500" /> saifullahahmed288@gmail.com
                   </a>
                   <div className="flex gap-6 pt-4">
-                    <a href="https://www.facebook.com/profile.php?id=61556673394898" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all"><Facebook size={20} /></a>
-                    <a href="https://www.linkedin.com/in/saifullah-irfan-/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all"><Linkedin size={20} /></a>
-                    <a href="#" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all"><Twitter size={20} /></a>
+                    <a href="https://www.facebook.com/profile.php?id=61556673394898" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all">
+                      <Facebook size={20} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/saifullah-irfan-/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all">
+                      <Linkedin size={20} />
+                    </a>
+                    <a href="#" className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all">
+                      <Twitter size={20} />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -367,13 +380,13 @@ const App: React.FC = () => {
               <div className="space-y-8">
                 <div className="bg-zinc-950 p-10 rounded-3xl border border-zinc-800">
                   <h3 className="text-2xl font-bold mb-6">Schedule a Consultation</h3>
-                  <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                  <form className="space-y-6" onSubmit={handleFormSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <input type="text" placeholder="Full Name" className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-5 focus:outline-none focus:border-amber-500 transition-colors" />
-                      <input type="email" placeholder="Email Address" className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-5 focus:outline-none focus:border-amber-500 transition-colors" />
+                      <input name="name" type="text" placeholder="Full Name" required className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-5 focus:outline-none focus:border-amber-500 transition-colors" />
+                      <input name="email" type="email" placeholder="Email Address" required className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-5 focus:outline-none focus:border-amber-500 transition-colors" />
                     </div>
-                    <textarea placeholder="Tell me about your business goals..." className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-5 h-40 focus:outline-none focus:border-amber-500 transition-colors resize-none" />
-                    <button className="w-full py-5 bg-amber-500 text-black font-bold uppercase tracking-widest rounded-xl hover:bg-white transition-all flex items-center justify-center gap-3 shadow-xl shadow-amber-500/10">
+                    <textarea name="message" placeholder="Tell me about your business goals..." required className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-5 h-40 focus:outline-none focus:border-amber-500 transition-colors resize-none" />
+                    <button type="submit" className="w-full py-5 bg-amber-500 text-black font-bold uppercase tracking-widest rounded-xl hover:bg-white transition-all flex items-center justify-center gap-3 shadow-xl shadow-amber-500/10">
                       Start Growing <ArrowRight size={20} />
                     </button>
                   </form>

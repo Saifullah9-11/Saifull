@@ -8,6 +8,64 @@ interface ProjectCardProps {
   project: Project;
 }
 
+const ProjectBackground = ({ id }: { id: string }) => {
+  switch (id) {
+    case '1': // B2B Lead Pipeline Engine
+      return (
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <svg className="w-full h-full" viewBox="0 0 800 800">
+            <motion.path 
+              d="M100 400 Q400 100 700 400 T1300 400" 
+              fill="none" stroke="#f59e0b" strokeWidth="2"
+              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 3, repeat: Infinity }}
+            />
+            <motion.path 
+              d="M100 500 Q400 200 700 500 T1300 500" 
+              fill="none" stroke="#f59e0b" strokeWidth="1"
+              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+            />
+            <circle cx="200" cy="200" r="50" fill="#f59e0b" className="blur-3xl" />
+            <circle cx="600" cy="600" r="80" fill="#f59e0b" className="blur-3xl opacity-50" />
+          </svg>
+        </div>
+      );
+    case '2': // Search Authority Growth
+      return (
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+           <div className="grid grid-cols-8 gap-4 w-full h-full p-20">
+             {[...Array(32)].map((_, i) => (
+               <motion.div 
+                 key={i} 
+                 initial={{ opacity: 0 }} animate={{ opacity: Math.random() }} 
+                 transition={{ repeat: Infinity, duration: 2 + Math.random() * 2 }}
+                 className="h-1 bg-amber-500/20" 
+               />
+             ))}
+           </div>
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 blur-[150px] rounded-full" />
+        </div>
+      );
+    case '3': // Social Ecosystem Launch
+      return (
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <svg className="w-full h-full" viewBox="0 0 100 100">
+            {[...Array(5)].map((_, i) => (
+              <motion.circle 
+                key={i} cx={20 + i*15} cy={20 + (i%2)*20} r="1" fill="#f59e0b"
+                animate={{ scale: [1, 2, 1] }} transition={{ repeat: Infinity, duration: 3, delay: i * 0.4 }}
+              />
+            ))}
+            <line x1="20" y1="20" x2="80" y2="80" stroke="#f59e0b" strokeWidth="0.1" />
+            <line x1="20" y1="80" x2="80" y2="20" stroke="#f59e0b" strokeWidth="0.1" />
+          </svg>
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent" />
+        </div>
+      );
+    default:
+      return null;
+  }
+};
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
@@ -63,10 +121,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl p-6 md:p-12 overflow-y-auto"
           >
-            <div className="max-w-6xl mx-auto">
+            <ProjectBackground id={project.id} />
+            
+            <div className="max-w-6xl mx-auto relative z-10">
               <button
                 onClick={() => setIsOpen(false)}
-                className="fixed top-8 right-8 text-zinc-400 hover:text-white transition-colors"
+                className="fixed top-8 right-8 text-zinc-400 hover:text-white transition-colors z-50 bg-black/50 p-2 rounded-full backdrop-blur-md"
               >
                 <X size={32} />
               </button>
@@ -104,9 +164,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                   initial={{ x: 20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="rounded-2xl overflow-hidden shadow-2xl shadow-black"
+                  className="rounded-2xl overflow-hidden shadow-2xl shadow-black relative group"
                 >
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
                 </motion.div>
               </div>
             </div>
