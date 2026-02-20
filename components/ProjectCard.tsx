@@ -126,9 +126,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <div className="max-w-6xl mx-auto relative z-10">
               <button
                 onClick={() => setIsOpen(false)}
-                className="fixed top-8 right-8 text-zinc-400 hover:text-white transition-colors z-50 bg-black/50 p-2 rounded-full backdrop-blur-md"
+                className="fixed top-4 right-4 md:top-8 md:right-8 text-zinc-400 hover:text-white transition-colors z-50 bg-black/50 p-2 rounded-full backdrop-blur-md"
               >
-                <X size={32} />
+                <X size={24} className="md:w-8 md:h-8" />
               </button>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-12">
@@ -137,24 +137,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <span className="text-amber-500 text-sm tracking-widest uppercase mb-4 block">
+                  <span className="text-amber-500 text-xs md:text-sm tracking-widest uppercase mb-4 block">
                     {project.category} — {project.client}
                   </span>
-                  <h2 className="text-5xl md:text-7xl font-bold mb-8">{project.title}</h2>
+                  <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 md:mb-8">{project.title}</h2>
                   
-                  <div className="space-y-8">
+                  <div className="space-y-6 md:space-y-8">
                     <section>
-                      <h4 className="text-zinc-500 uppercase text-xs tracking-widest mb-2 font-bold">The Problem</h4>
-                      <p className="text-xl text-zinc-300 leading-relaxed">{project.problem}</p>
+                      <h4 className="text-zinc-500 uppercase text-[10px] md:text-xs tracking-widest mb-2 font-bold">The Problem</h4>
+                      <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">{project.problem}</p>
                     </section>
                     <section>
-                      <h4 className="text-zinc-500 uppercase text-xs tracking-widest mb-2 font-bold">Strategic Impact</h4>
-                      <p className="text-xl text-zinc-300 leading-relaxed">{project.strategy}</p>
+                      <h4 className="text-zinc-500 uppercase text-[10px] md:text-xs tracking-widest mb-2 font-bold">Strategic Impact</h4>
+                      <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">{project.strategy}</p>
                     </section>
                     <section>
-                      <h4 className="text-zinc-500 uppercase text-xs tracking-widest mb-2 font-bold">The Result</h4>
-                      <div className="p-6 rounded-lg bg-zinc-900 border border-amber-500/20">
-                        <p className="text-2xl text-amber-500 font-bold">{project.results}</p>
+                      <h4 className="text-zinc-500 uppercase text-[10px] md:text-xs tracking-widest mb-2 font-bold">The Result</h4>
+                      <div className="p-4 md:p-6 rounded-lg bg-zinc-900 border border-amber-500/20">
+                        <p className="text-xl md:text-2xl text-amber-500 font-bold">{project.results}</p>
                       </div>
                     </section>
                   </div>

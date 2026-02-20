@@ -12,7 +12,7 @@ export const PROJECTS: Project[] = [
     strategy: 'Implemented a multi-channel cold email and LinkedIn outreach system with strict prospect filtering.',
     solution: 'Automated follow-up sequences and high-conversion email copywriting.',
     results: 'Generated 40+ qualified demo bookings in the first 60 days.',
-    image: 'https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200'
   },
   {
     id: '2',
