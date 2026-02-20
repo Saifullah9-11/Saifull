@@ -59,8 +59,15 @@ export class GeminiService {
     }
 
     const downloadLink = operation.response?.generatedVideos?.[0]?.video?.uri;
-    // fix: Ensure API key is appended to the video download link
-    const response = await fetch(`${downloadLink}&key=${process.env.API_KEY}`);
+    if (!downloadLink) throw new Error("No video download link returned");
+
+    // fix: Use the correct header for the API key as per guidelines
+    const response = await window.fetch(downloadLink, {
+      method: 'GET',
+      headers: {
+        'x-goog-api-key': process.env.API_KEY || '',
+      },
+    });
     const blob = await response.blob();
     return URL.createObjectURL(blob);
   }
